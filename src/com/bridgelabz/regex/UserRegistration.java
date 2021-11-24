@@ -9,6 +9,7 @@ public class UserRegistration {
 		pattern.isValidLastName();
 		pattern.isValidEmail();
 		pattern.isValidPhoneNumber();
+		pattern.isValidPassword();
         pattern.print();
         
 	}

@@ -3,7 +3,7 @@ package com.bridgelabz.regex;
 import java.util.Scanner;
 
 public class Pattern {
-	private String firstName , lastName, email ,phoneNumber;
+	private String firstName , lastName, email ,phoneNumber,password;
 
 	Scanner sc = new Scanner(System.in);
 
@@ -54,6 +54,18 @@ public class Pattern {
 			isValidPhoneNumber();
 		}
 	}
+	
+	public void isValidPassword() {
+		System.out.print("Enter Password : ");
+		password = sc.nextLine();
+		boolean check = password.matches("^[a-zA-Z]{8,}$");   //Rule1: minimum 8 Characters
+		if (check == true) {
+		} else {
+			System.out.println("Invalid [Atleast 8 Character ]");
+			isValidPassword();
+		}
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -77,9 +89,26 @@ public class Pattern {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public void print() {
-	System.out.println("[firstName=" + firstName + ", lastName=" + lastName + ",email=" + email+ ",phoneNumber=" + phoneNumber+"]");
+	System.out.println("[firstName=" + firstName + ", lastName=" + lastName + ",email=" + email+ ",phoneNumber=" + phoneNumber+",password=" +password+"]");
 		
 	}
+
+	
 }
