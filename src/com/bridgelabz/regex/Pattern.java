@@ -3,7 +3,7 @@ package com.bridgelabz.regex;
 import java.util.Scanner;
 
 public class Pattern {
-	private String firstName , lastName, email;
+	private String firstName , lastName, email ,phoneNumber;
 
 	Scanner sc = new Scanner(System.in);
 
@@ -43,6 +43,17 @@ public class Pattern {
 			isValidEmail();
 		}
 	}
+	
+	public void isValidPhoneNumber() {
+		System.out.print("Enter Phone Number : ");
+		phoneNumber = sc.nextLine();
+		boolean check = phoneNumber.matches("^([0-9]{1,2})\\s([0-9]{10})$");
+		if (check == true) {
+		} else {
+			System.out.println("Invalid");	
+			isValidPhoneNumber();
+		}
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -68,7 +79,7 @@ public class Pattern {
 	}
 
 	public void print() {
-	System.out.println("[firstName=" + firstName + ", lastName=" + lastName + ",email=" + email+"]");
+	System.out.println("[firstName=" + firstName + ", lastName=" + lastName + ",email=" + email+ ",phoneNumber=" + phoneNumber+"]");
 		
 	}
 }
