@@ -3,7 +3,7 @@ package com.bridgelabz.regex;
 import java.util.Scanner;
 
 public class Pattern {
-	private String firstName , lastName;
+	private String firstName , lastName, email;
 
 	Scanner sc = new Scanner(System.in);
 
@@ -32,6 +32,25 @@ public class Pattern {
 			isValidLastName();
 		}
 	}
+	
+	public void isValidEmail() {
+		System.out.print("Enter Email : ");
+		email = sc.nextLine();
+		boolean check = email.matches("^[0-9a-zA-Z+-._]+@[-+_.0-9a-zA-Z]*.[a-zA-Z]{2,3}.([a-zA-z]{2,3})*$");
+		if (check == true) {
+		} else {
+			System.out.println("Invalid (Eg:abc.xyz@bl.co.in)");
+			isValidEmail();
+		}
+	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -49,7 +68,7 @@ public class Pattern {
 	}
 
 	public void print() {
-	System.out.println("[firstName=" + firstName + ", lastName=" + lastName + "]");
+	System.out.println("[firstName=" + firstName + ", lastName=" + lastName + ",email=" + email+"]");
 		
 	}
 }

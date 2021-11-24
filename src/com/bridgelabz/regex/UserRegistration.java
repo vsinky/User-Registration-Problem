@@ -7,6 +7,7 @@ public class UserRegistration {
 
 		pattern.isValidFirstName();
 		pattern.isValidLastName();
+		pattern.isValidEmail();
         pattern.print();
         
 	}
