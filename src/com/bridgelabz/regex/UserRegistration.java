@@ -5,10 +5,10 @@ public class UserRegistration {
 	public static void main(String[] args) {
 		Pattern pattern = new Pattern();
 
-		pattern.isValidFirstName();
-		pattern.isValidLastName();
-		pattern.isValidEmail();
-		pattern.isValidPhoneNumber();
+//  	pattern.isValidFirstName();
+//		pattern.isValidLastName();
+//		pattern.isValidEmail();
+//		pattern.isValidPhoneNumber();
 		pattern.isValidPassword();
         pattern.print();
         

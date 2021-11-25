@@ -58,8 +58,8 @@ public class Pattern {
 	public void isValidPassword() {
 		System.out.print("Enter Password : ");
 		password = sc.nextLine();
-		boolean check = password.matches("^(?=.*[A-Z])(?=.*[0-9]).{8,}$");
-		if (check == true) {
+		boolean check = password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@|#|$|%|^|&|-|+|=|(|)|])(?=\\S+$).{8,}$");
+		if (check == true) {  
 		} else {
 			System.out.println("Invalid [Atleast 8 char / 1 Upper Case / 1 numaeric number]");
 			isValidPassword();
