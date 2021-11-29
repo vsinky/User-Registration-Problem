@@ -1,0 +1,122 @@
+package com.bridgelabz.regex;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Registration {
+	public static Registration instance;
+	public static String NAME = "^([A-Z]{1}+[a-z]{2,})*$";
+	public final static String EMAIL = "^[0-9a-zA-Z+-._]+@[-+_.0-9a-zA-Z]*.[a-zA-Z]{2,3}.([a-zA-z]{2,3})*$";
+	public final static String PHONE_NUMBER = "^([0-9]{1,2})\\s([0-9]{10})$)";
+	public final static String PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@]).{8,}$";
+//	public final static String PHONE_NUMBER = "^[6-9]{1}[0-9]{9,}$";
+
+	private String firstName, lastName, email, phoneNumber, password;
+
+	
+	Scanner sc = new Scanner(System.in);
+
+	public static Registration getInstance() {
+		if (instance == null) {
+			instance = new Registration();
+		}
+		return instance;
+	}
+
+	public void isValidFirstName() {
+		System.out.print("Enter First Name : ");
+		firstName = sc.nextLine();
+		boolean check = firstName.matches("^([A-Z]{1}+[a-z]{2,})*$");
+		if (check == true) {
+			System.out.println("Valid");
+		} else {
+			System.out.println("Invalid ");
+			isValidFirstName();
+		}
+	}
+
+	public void isValidLastName() {
+
+		System.out.print("Enter Last Name : ");
+		lastName = sc.nextLine();
+		boolean check = lastName.matches("^([A-Z]{1}+[a-z]{2,})*$");
+		if (check == true) {
+			System.out.println("Valid");
+		} else {
+			System.out.println("Invalid ");
+			isValidLastName();
+		}
+	}
+
+	public void isValidEmail() {
+		System.out.print("Enter Email : ");
+		email = sc.nextLine();
+		boolean check = email.matches("^[0-9a-zA-Z+-._]+@[-+_.0-9a-zA-Z]*.[a-zA-Z]{2,3}.([a-zA-z]{2,3})*$");
+		if (check == true) {
+			System.out.println("Valid");
+		} else {
+			System.out.println("Invalid (Eg:abc.xyz@bl.co.in)");
+			isValidEmail();
+		}
+	}
+
+	public void isValidPhoneNumber() {
+		System.out.print("Enter Phone Number : ");
+		phoneNumber = sc.nextLine();
+		boolean check = phoneNumber.matches("^([0-9]{1,2})\\s([0-9]{10})$");
+		if (check == true) {
+		} else {
+			System.out.println("Invalid");
+			isValidPhoneNumber();
+		}
+	}
+
+	public void isValidPassword() {
+		System.out.print("Enter Password : ");
+		password = sc.nextLine();
+		boolean check = password
+				.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@|#|$|%|^|&|-|+|=|(|)|])(?=\\S+$).{8,}$");
+		if (check == true) {
+		} else {
+			System.out.println("Invalid [Atleast 8 char / 1 Upper Case / 1 numaeric number]");
+			isValidPassword();
+		}
+	}
+
+	public void readFile() throws FileNotFoundException {
+		File file = new File("E:\\RFP_Java_80\\user-registration-problem\\src\\DifferentEmail.txt");
+				
+		Scanner sc = new Scanner(file);
+
+		String emails = null;
+		while (sc.hasNextLine())
+			emails = sc.nextLine();
+		System.out.println("Total email:-\n" + emails);
+
+		String[] emailArr = emails.split(",");
+		List<String> validEmail = new ArrayList<>();
+		List<String> invalidEmail = new ArrayList<>();
+
+		for (String a : emailArr) {
+			boolean check = a.matches(EMAIL);
+			if (check == true) {
+				validEmail.add(a);
+
+			} else {
+				invalidEmail.add(a);
+			}
+		}
+		System.out.println("\n-Valid Email- :");
+		for (String a : validEmail)
+			System.out.println(a);
+
+		System.out.println("\n-InValid Email- :");
+		for (String a : invalidEmail)
+			System.out.println(a);
+		sc.close();
+	}
+
+}

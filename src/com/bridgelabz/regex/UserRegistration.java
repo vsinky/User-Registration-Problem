@@ -1,16 +1,20 @@
 package com.bridgelabz.regex;
 
+import java.io.FileNotFoundException;
+
 public class UserRegistration {
+public static void main(String[] args) throws FileNotFoundException {
+		 
+		Pattern pattern = Pattern.getInstance();
+		Registration registration = Registration.getInstance();
 
-	public static void main(String[] args) {
-		Pattern pattern = new Pattern();
+	//	registration.isValidFirstName();
+	//	registration.isValidLastName();
+//		registration.isValidEmail();
+//		registration.isValidPhoneNumber();
+//		registration.isValidPassword();
+		registration.readFile();
+//		pattern.print();
 
-//  	pattern.isValidFirstName();
-//		pattern.isValidLastName();
-//		pattern.isValidEmail();
-//		pattern.isValidPhoneNumber();
-		pattern.isValidPassword();
-        pattern.print();
-        
 	}
 }
