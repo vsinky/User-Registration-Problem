@@ -12,11 +12,9 @@ public class Registration {
 	public final static String EMAIL = "^[0-9a-zA-Z+-._]+@[-+_.0-9a-zA-Z]*.[a-zA-Z]{2,3}.([a-zA-z]{2,3})*$";
 	public final static String PHONE_NUMBER = "^([0-9]{1,2})\\s([0-9]{10})$";
 	public final static String PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@]).{8,}$";
-//	public final static String PHONE_NUMBER = "^[6-9]{1}[0-9]{9,}$";
 
 	private String firstName, lastName, email, phoneNumber, password;
 
-	
 	Scanner sc = new Scanner(System.in);
 
 	public static Registration getInstance() {
@@ -97,7 +95,7 @@ public class Registration {
 
 	public void readFile() throws FileNotFoundException {
 		File file = new File("E:\\RFP_Java_80\\user-registration-problem\\src\\DifferentEmail.txt");
-				
+
 		Scanner sc = new Scanner(file);
 
 		String emails = null;
@@ -108,24 +106,30 @@ public class Registration {
 		String[] emailArr = emails.split(",");
 		List<String> validEmail = new ArrayList<>();
 		List<String> invalidEmail = new ArrayList<>();
-
+		Pattern pattern = Pattern.getInstance();
 		for (String a : emailArr) {
 			boolean check = a.matches(EMAIL);
 			if (check == true) {
-				validEmail.add(a);
+				pattern.validEmail.add(a);
 
 			} else {
-				invalidEmail.add(a);
+				pattern.invalidEmail.add(a);
 			}
 		}
 		System.out.println("\n-Valid Email- :");
-		for (String a : validEmail)
+		for (String a : pattern.validEmail)
 			System.out.println(a);
 
 		System.out.println("\n-InValid Email- :");
-		for (String a : invalidEmail)
+		for (String a : pattern.invalidEmail)
 			System.out.println(a);
 		sc.close();
+	}
+
+	public boolean addEmail(String email2) {
+		email = email2;
+		boolean check = email.matches(EMAIL);
+		return check;
 	}
 
 }
