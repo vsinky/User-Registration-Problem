@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class Registration {
 	public static Registration instance;
-	public static String NAME = "^([A-Z]{1}+[a-z]{2,})*$";
+	public final static String NAME = "^([A-Z]{1}+[a-z]{2,})*$";
 	public final static String EMAIL = "^[0-9a-zA-Z+-._]+@[-+_.0-9a-zA-Z]*.[a-zA-Z]{2,3}.([a-zA-z]{2,3})*$";
-	public final static String PHONE_NUMBER = "^([0-9]{1,2})\\s([0-9]{10})$)";
+	public final static String PHONE_NUMBER = "^([0-9]{1,2})\\s([0-9]{10})$";
 	public final static String PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@]).{8,}$";
 //	public final static String PHONE_NUMBER = "^[6-9]{1}[0-9]{9,}$";
 
@@ -29,61 +29,70 @@ public class Registration {
 	public void isValidFirstName() {
 		System.out.print("Enter First Name : ");
 		firstName = sc.nextLine();
-		boolean check = firstName.matches("^([A-Z]{1}+[a-z]{2,})*$");
-		if (check == true) {
-			System.out.println("Valid");
-		} else {
-			System.out.println("Invalid ");
-			isValidFirstName();
-		}
+		Pattern pattern = Pattern.getInstance();
+		pattern.setFirstName(firstName);
+		boolean check = firstName.matches("NAME");
+//		if (check == true) {
+//			System.out.println("Valid");
+//		} else {
+//			System.out.println("Invalid ");
+//			isValidFirstName();
+//		}
 	}
 
 	public void isValidLastName() {
 
 		System.out.print("Enter Last Name : ");
 		lastName = sc.nextLine();
-		boolean check = lastName.matches("^([A-Z]{1}+[a-z]{2,})*$");
-		if (check == true) {
-			System.out.println("Valid");
-		} else {
-			System.out.println("Invalid ");
-			isValidLastName();
-		}
+		Pattern pattern = Pattern.getInstance();
+		pattern.setLastName(lastName);
+		boolean check = lastName.matches("NAME");
+//		if (check == true) {
+//			System.out.println("Valid");
+//		} else {
+//			System.out.println("Invalid ");
+//			isValidLastName();
+//		}
 	}
 
 	public void isValidEmail() {
 		System.out.print("Enter Email : ");
 		email = sc.nextLine();
-		boolean check = email.matches("^[0-9a-zA-Z+-._]+@[-+_.0-9a-zA-Z]*.[a-zA-Z]{2,3}.([a-zA-z]{2,3})*$");
-		if (check == true) {
-			System.out.println("Valid");
-		} else {
-			System.out.println("Invalid (Eg:abc.xyz@bl.co.in)");
-			isValidEmail();
-		}
+		Pattern pattern = Pattern.getInstance();
+		pattern.setEmail(email);
+		boolean check = email.matches("EMAIL");
+//		if (check == true) {
+//			System.out.println("Valid");
+//		} else {
+//			System.out.println("Invalid (Eg:abc.xyz@bl.co.in)");
+//			isValidEmail();
+//		}
 	}
 
 	public void isValidPhoneNumber() {
 		System.out.print("Enter Phone Number : ");
 		phoneNumber = sc.nextLine();
-		boolean check = phoneNumber.matches("^([0-9]{1,2})\\s([0-9]{10})$");
-		if (check == true) {
-		} else {
-			System.out.println("Invalid");
-			isValidPhoneNumber();
-		}
+		Pattern pattern = Pattern.getInstance();
+		pattern.setPhoneNumber(phoneNumber);
+		boolean check = phoneNumber.matches("PHONE_NUMBER");
+//		if (check == true) {
+//		} else {
+//			System.out.println("Invalid");
+//			isValidPhoneNumber();
+//		}
 	}
 
 	public void isValidPassword() {
 		System.out.print("Enter Password : ");
 		password = sc.nextLine();
-		boolean check = password
-				.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@|#|$|%|^|&|-|+|=|(|)|])(?=\\S+$).{8,}$");
-		if (check == true) {
-		} else {
-			System.out.println("Invalid [Atleast 8 char / 1 Upper Case / 1 numaeric number]");
-			isValidPassword();
-		}
+		Pattern pattern = Pattern.getInstance();
+		pattern.setPassword(password);
+		boolean check = password.matches("PASSWORD");
+//		if (check == true) {
+//		} else {
+//			System.out.println("Invalid [Atleast 8 char / 1 Upper Case / 1 numaeric number]");
+//			isValidPassword();
+//		}
 	}
 
 	public void readFile() throws FileNotFoundException {
