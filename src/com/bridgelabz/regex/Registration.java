@@ -30,12 +30,17 @@ public class Registration {
 		Pattern pattern = Pattern.getInstance();
 		pattern.setFirstName(firstName);
 		boolean check = firstName.matches("NAME");
-//		if (check == true) {
-//			System.out.println("Valid");
-//		} else {
-//			System.out.println("Invalid ");
-//			isValidFirstName();
-//		}
+		try {
+		if (check == true) {
+			System.out.println("Valid");
+		} else {
+			throw new InvalideUserDetailsException("FirstName");
+		}
+			//System.out.println("Invalid ");
+			//isValidFirstName();
+		}catch (InvalideUserDetailsException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void isValidLastName() {
@@ -45,13 +50,20 @@ public class Registration {
 		Pattern pattern = Pattern.getInstance();
 		pattern.setLastName(lastName);
 		boolean check = lastName.matches("NAME");
-//		if (check == true) {
-//			System.out.println("Valid");
-//		} else {
-//			System.out.println("Invalid ");
-//			isValidLastName();
-//		}
-	}
+		try {
+			
+		if (check == true) {
+			System.out.println("Valid");
+		} else {
+			throw new InvalideUserDetailsException("LastName");
+		}
+	} catch (InvalideUserDetailsException e) {
+		e.printStackTrace();
+		}
+			//System.out.println("Invalid ");
+			//isValidLastName();
+		}
+	
 
 	public void isValidEmail() {
 		System.out.print("Enter Email : ");
@@ -59,13 +71,18 @@ public class Registration {
 		Pattern pattern = Pattern.getInstance();
 		pattern.setEmail(email);
 		boolean check = email.matches("EMAIL");
-//		if (check == true) {
-//			System.out.println("Valid");
-//		} else {
-//			System.out.println("Invalid (Eg:abc.xyz@bl.co.in)");
-//			isValidEmail();
-//		}
-	}
+		try {
+		if (check == true) {
+			System.out.println("Valid");
+		} else {
+			throw new InvalideUserDetailsException("LastName");
+		}
+	} catch (InvalideUserDetailsException e) {
+		e.printStackTrace();
+		}
+			//System.out.println("Invalid (Eg:abc.xyz@bl.co.in)");
+			//isValidEmail();
+		}
 
 	public void isValidPhoneNumber() {
 		System.out.print("Enter Phone Number : ");
@@ -73,12 +90,17 @@ public class Registration {
 		Pattern pattern = Pattern.getInstance();
 		pattern.setPhoneNumber(phoneNumber);
 		boolean check = phoneNumber.matches("PHONE_NUMBER");
-//		if (check == true) {
-//		} else {
-//			System.out.println("Invalid");
-//			isValidPhoneNumber();
-//		}
-	}
+		try {
+		if (check == true) {
+		} else {
+			throw new InvalideUserDetailsException("LastName");
+		}
+	} catch (InvalideUserDetailsException e) {
+		e.printStackTrace();
+		}
+			//System.out.println("Invalid");
+			//isValidPhoneNumber();
+		}
 
 	public void isValidPassword() {
 		System.out.print("Enter Password : ");
@@ -86,12 +108,17 @@ public class Registration {
 		Pattern pattern = Pattern.getInstance();
 		pattern.setPassword(password);
 		boolean check = password.matches("PASSWORD");
-//		if (check == true) {
-//		} else {
-//			System.out.println("Invalid [Atleast 8 char / 1 Upper Case / 1 numaeric number]");
-//			isValidPassword();
-//		}
-	}
+		try {
+		if (check == true) {
+		} else {
+			throw new InvalideUserDetailsException("LastName");
+		}
+	} catch (InvalideUserDetailsException e) {
+		e.printStackTrace();
+		}
+			//System.out.println("Invalid [Atleast 8 char / 1 Upper Case / 1 numaeric number]");
+			//isValidPassword();
+		}
 
 	public void readFile() throws FileNotFoundException {
 		File file = new File("E:\\RFP_Java_80\\user-registration-problem\\src\\DifferentEmail.txt");

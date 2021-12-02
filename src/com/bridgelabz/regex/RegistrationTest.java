@@ -118,7 +118,7 @@ public class RegistrationTest {
 
 	@After
 	public void endTask() {
-		System.out.println("End task");
+		System.out.println("End");
 	}
 
 	@Test
