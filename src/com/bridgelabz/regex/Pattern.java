@@ -9,7 +9,7 @@ public class Pattern {
 	static List<String> validEmail;
 	static List<String> invalidEmail;
 
-	private Pattern() {
+	Pattern() {
 		validEmail = new ArrayList<>();
 		invalidEmail = new ArrayList<>();
 	}
