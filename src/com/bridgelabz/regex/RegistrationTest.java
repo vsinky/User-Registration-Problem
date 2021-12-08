@@ -29,11 +29,14 @@ public class RegistrationTest {
 	@Test
 	public void test_Added_FistName_Should_Be_Valid() throws InvalideUserDetailsException {
 		System.out.println("for valid:");
-		boolean check = registration.isvalidateFirstName.compare("Sinky");
+		IUserRegistration firstName =(String FirstName) -> {
+			boolean check = registration.isvalidateFirstName.compare("Sinky");
 		assertEquals(true, check);
-
+		return check;
+		
+	};
 	}
-
+	
 //	@Test
 //	public void testAddedFistNameShouldBeInValid() throws InvalideUserDetailsException {
 //		System.out.println("for invalid:");
@@ -43,9 +46,12 @@ public class RegistrationTest {
 
 	@Test
 	public void testAddedLastNameShouldBeValid() throws InvalideUserDetailsException {
-		System.out.println("for valid:");
-		boolean check = registration.isvalidateLastName.compare("Verma");
+		IUserRegistration lastName =(String inputs) -> {
+			System.out.println("for valid:");
+		boolean check =  inputs.matches(Registration.NAME);
 		assertEquals(true, check);
+		return check;
+		};
 	}
 
 //	@Test
@@ -57,9 +63,12 @@ public class RegistrationTest {
 
 	@Test
 	public void testAddedEmailShouldBeValid() throws InvalideUserDetailsException {
-		System.out.println("for valid:");
+		IUserRegistration email =(String) -> {
+			System.out.println("for valid:");
 		boolean check = registration.isvalidateEmail.compare("abc@gmail.com");
 		assertEquals(true, check);
+		return check;
+		};
 	}
 
 //	@Test
@@ -71,9 +80,12 @@ public class RegistrationTest {
 
 	@Test
 	public void testAddedPasswordShouldBeValid() throws InvalideUserDetailsException {
-		System.out.println("for valid:");
+		IUserRegistration password =(String) -> {
+			System.out.println("for valid:");
 		boolean check = registration.isvalidatePassword.compare("abcD@123");
 		assertEquals(true, check);
+		return check;
+		};
 	}
 
 //	@Test
@@ -85,9 +97,12 @@ public class RegistrationTest {
 
 	@Test
 	public void testAddedPhoneNumberShouldBeValid() throws InvalideUserDetailsException {
-		System.out.println("for valid:");
+		IUserRegistration phoneNumber =(String) -> {
+			System.out.println("for valid:");
 		boolean check = registration.isvalidatePhone.compare("91 8523697410");
 		assertEquals(true, check);
+		return false;
+		};
 	}
 
 //	@Test
@@ -97,9 +112,9 @@ public class RegistrationTest {
 //		assertEquals(false,check);
 //	}
 
-	@After
-	public void endTask() {
-		System.out.println("End");
-	}
+//	@After
+//	public void endTask() {
+//		System.out.println("End");
+//	}
 
 }
